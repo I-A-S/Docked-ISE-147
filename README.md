@@ -12,15 +12,14 @@
   </p>
 </div>
 
-## 📖 Description
-
+## **Description**
 **Spin up and run a Xilinx ISE 14.7 installation anywhere within minutes!**
 
-This project solves the "dependency hell" of installing legacy Xilinx tools on modern Linux distributions (Ubuntu 22.04+, Fedora, Arch, etc.). It encapsulates all the necessary 32-bit libraries and environment configurations required to run `xtclsh`, `xst`, `ngdbuild`, and `bitgen` without crashing.
+This project aims to solve the absolute headache of installing legacy Xilinx tools on modern Linux distributions (Ubuntu 22.04+, Fedora, Arch, etc.). It encapsulates all the necessary 32-bit libraries and environment configurations required to run `xtclsh`, `xst`, `ngdbuild`, and `bitgen` without crashing.
 
 **Note:** This container is designed for **Command Line (CLI) usage only**. It is ideal for CI/CD pipelines, automated builds, and Makefile-based workflows. It does not support the ISE GUI (Project Navigator).
 
-## Prerequisites
+## **Prerequisites**
 Due to Xilinx licensing limits, you have to download the ISE installer yourself and place it in the `Resources/` directory.
 
 You can download the Xilinx ISE Design Suite- 14.7 here:
@@ -31,7 +30,7 @@ https://www.xilinx.com/member/forms/download/xef.html?filename=Xilinx_ISE_DS_Lin
 
 **Note:** Ensure the file is named `Xilinx_ISE_DS_Lin_14.7_1015_1.tar` and is placed inside the `Resources/` directory.
 
-## Installation / Build
+## **Installation / Build**
 
 1) Clone this repo:
 
@@ -48,7 +47,7 @@ cd Docked-ISE-147
 docker build -t docked-ise-147 .
 ```
 
-## Usage
+## **Usage**
 
 1) Verify the installation:
 
@@ -64,7 +63,7 @@ docker run --rm -it -v "$(pwd):/workspace" docked-ise-147 bash
 
 *(Note: On Windows PowerShell, use "\${PWD}" instead of "$(pwd)")*
 
-## Licensing
+## **Licensing**
 This container installs the ISE WebPACK edition by default (You can check `Resources/install.sh` for customizing this!).
 
 If your project requires a specific license file (Xilinx.lic), you can mount it into the container like so:
@@ -79,7 +78,7 @@ docker run --rm \
 
 (Alternatively, set the XILINXD_LICENSE_FILE env var with -e flag).
 
-## ⚖️ License
+## **License**
 
 This project is licensed under the Apache License Version 2.0.
 
