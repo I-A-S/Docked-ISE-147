@@ -15,7 +15,7 @@
 ## **Description**
 **Spin up and run a Xilinx ISE 14.7 installation anywhere within minutes!**
 
-**(OSS CAD Suite comes bundled as well!)**
+**(+ OSS CAD Suite comes bundled)**
 
 This project aims to solve the absolute headache of installing legacy Xilinx tools on modern Linux distributions (Ubuntu 22.04+, Fedora, Arch, etc.). It encapsulates all the necessary 32-bit libraries and environment configurations required to run `xtclsh`, `xst`, `ngdbuild`, and `bitgen` without crashing.
 
