@@ -40,10 +40,16 @@ RUN dpkg --add-architecture i386 && \
     libxtst6:i386 \
     libgtk2.0-0:i386 \
     wget \
+    ca-certificates \
     gawk \
     git \
     make \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# Install OSS Cad Suite
+RUN wget https://github.com/YosysHQ/oss-cad-suite-build/releases/download/2023-10-03/oss-cad-suite-linux-x64-20231003.tgz -O /tmp/oss-cad-suite.tgz && \
+    tar -xzf /tmp/oss-cad-suite.tgz -C /opt/ && \
+    rm /tmp/oss-cad-suite.tgz
 
 # Copy the resources into the image
 COPY Resources/Xilinx_ISE_DS_Lin_14.7_1015_1.tar /tmp/
@@ -55,12 +61,14 @@ RUN cd /tmp && \
     cd Xilinx_ISE_DS_Lin_14.7_1015_1 && \
     bin/lin64/batchxsetup -batch /tmp/install.sh
 
-# Source xilinx env/settings for interactive sessions
-RUN echo "source /opt/Xilinx/14.7/ISE_DS/settings64.sh" >> /root/.bashrc
+# Source Xilinx and OSS CAD Suite envs for interactive sessions
+RUN echo "source /opt/Xilinx/14.7/ISE_DS/settings64.sh" >> /root/.bashrc && \
+    echo "source /opt/oss-cad-suite/environment" >> /root/.bashrc
 
-# Create a wrapper script to source the xilinx env/settings
+# Create a wrapper script to source the Xilinx env/settings and OSS CAD Suite
 RUN echo '#!/bin/bash' > /opt/xilinx_run.sh && \
     echo 'source /opt/Xilinx/14.7/ISE_DS/settings64.sh' >> /opt/xilinx_run.sh && \
+    echo 'source /opt/oss-cad-suite/environment' >> /opt/xilinx_run.sh && \
     echo 'export PATH=$PATH:/opt/Xilinx/14.7/ISE_DS/ISE/bin/lin64' >> /opt/xilinx_run.sh && \
     echo 'exec "$@"' >> /opt/xilinx_run.sh && \
     chmod +x /opt/xilinx_run.sh
