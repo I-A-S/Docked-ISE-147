@@ -9,7 +9,7 @@ RUN dpkg --add-architecture i386 && \
     apt-get update && \
     apt-get install -y \
     build-essential \
-    libz1:i386 \
+    zlib1g:i386 \
     libncurses5:i386 \
     libbz2-1.0:i386 \
     libstdc++6:i386 \
@@ -39,6 +39,12 @@ RUN dpkg --add-architecture i386 && \
     libxrender1:i386 \
     libxtst6:i386 \
     libgtk2.0-0:i386 \
+    zlib1g-dev \
+    libffi-dev \
+    libreadline-dev \
+    libncurses5-dev \
+    libbz2-dev \
+    python3-dev \
     wget \
     ca-certificates \
     gawk \

@@ -65,10 +65,10 @@ docker run --rm -it -v "$(pwd):/workspace" docked-ise-147 bash
 
 *(Note: On Windows PowerShell, use "\${PWD}" instead of "$(pwd)")*
 
-## **Licensing**
+## **Xilinx License Setup**
 This container installs the ISE WebPACK edition by default (You can check `Resources/install.sh` for customizing this!).
 
-If your project requires a specific license file (Xilinx.lic), you can mount it into the container like so:
+You can mount your license file (Xilinx.lic) into the container like so:
 
 ```Bash
 docker run --rm \
